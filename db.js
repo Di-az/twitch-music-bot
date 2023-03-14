@@ -1,9 +1,10 @@
 const { query } = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 
-const mongoAtlasUri =
-  "mongodb+srv://diaz:Nb6wFvwcCV6Ip8qO@cluster0.yu7ywzr.mongodb.net/?retryWrites=true&w=majority";
+const mongoAtlasUri = process.env.MONGO_DB;
 
 const connectToDB = () => {
   mongoose
@@ -86,4 +87,10 @@ const clearSongs = () => {
   // });
 };
 
-module.exports = { connectToDB, listSongs, findSong, updateSong, clearSongs };
+module.exports = {
+  connectToDB,
+  listSongs,
+  findSong,
+  searchSong,
+  clearSongs,
+};
