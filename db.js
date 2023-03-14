@@ -46,18 +46,17 @@ const findSong = (songName) => {
   });
 };
 
-const updateSong = async (songName) => {
-  await Song.findOneAndUpdate(
-    { name: songName },
-    { $inc: { dailyCount: 1 } },
-    { new: true }
-  ).then((res) => {
-    if (res == null) {
-      console.log(`Song ${songName} not found`);
-    } else {
-      console.log(res);
-    }
-  });
+const searchSong = async (songName) => {
+  try {
+    const res = await Song.findOneAndUpdate(
+      { name: songName },
+      { $inc: { dailyCount: 1 } },
+      { new: true }
+    );
+    return res;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const clearSongs = () => {
