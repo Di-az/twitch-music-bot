@@ -35,8 +35,16 @@ const connectClient = () => {
   }
 };
 
-const say = (client, song) => {
-  client.say("#diaz1", `Song Name is: ${song}`);
+const sayNewSong = (client, song) => {
+  client.say("#diaz1", `Dance ${song}`);
 };
 
-module.exports = { connectClient, say };
+const sayRepeatSong = (client, song, count) => {
+  client.say("#diaz1", `FeelsTiredMan Song ${count}/10`);
+};
+
+const sayOutroSong = (client) => {
+  client.say("#diaz1", `peepoSadJam / sometimes peepo`);
+};
+
+module.exports = { connectClient, sayNewSong, sayRepeatSong, sayOutroSong };
